@@ -1,6 +1,3 @@
-import AuthContext from "./AuthContext";
-import { useContext } from "react";
-import Notifications from "./NotificationState";
 import { ECOM_API_URL } from "@env";
 
 export async function getFooter() {
@@ -130,10 +127,10 @@ export async function DeleteCartLine({
 }
 
 // user profile apis -> POST
-export async function PostUserData({ token: token, userData: userData }) {
+export async function CreateUserApi({ userData: userData }) {
   let response = await fetch(`${ECOM_API_URL}/create-user/`, {
     method: "POST",
-    headers: { Authorization: token, "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
   });
   let user_updated_data = await response.json();
@@ -151,11 +148,7 @@ export async function postForgotEmail({ Data: Data }) {
     body: JSON.stringify(Data),
   });
   let profile_data = await response.json();
-  if (response.ok) {
-    return profile_data;
-  } else {
-    throw response;
-  }
+  return profile_data;
 }
 
 export async function postValidationForgotOtp({ Data: Data }) {

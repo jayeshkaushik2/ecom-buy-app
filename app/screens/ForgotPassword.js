@@ -1,47 +1,32 @@
-import React, { useContext } from "react";
-import {
-  Pressable,
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
-import AuthContext from "../../context/AuthContext";
+import React from "react";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { postForgotEmail } from "../../context/Apis";
 
 const colors = {
   background_color: "black",
 };
 
-function Login(props) {
-  // const { loginUser } = useContext(AuthContext);
+function ForgotPassword(props) {
   const [showCompanyName, setShowCompanyName] = React.useState(true);
-  const [showGoogleFacebook, setshowGoogleFacebook] = React.useState(true);
   const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
 
-  const handleLogin = () => {
+  const postData = async (data) => {
+    try {
+      let response = await postForgotEmail({ Data: data });
+      console.log(response?.success === true);
+      if (response?.success === true) {
+        props?.navigation.navigate("verify_forgotpass_otp");
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  const handleSendOtp = () => {
     let data = {
       email: email,
-      password: password,
     };
-    // loginUser(data);
-  };
-
-  const handleForgotPass = () => {
-    props?.navigation.navigate("forgot_password");
-  };
-
-  const handleGoogleLogin = () => {
-    console.log("handleGoogleLogin");
-  };
-
-  const handleFacebookLogin = () => {
-    console.log("handleFacebookLogin");
-  };
-
-  const handleSignup = () => {
-    props?.navigation.navigate("signup");
+    postData(data);
   };
 
   return (
@@ -50,70 +35,18 @@ function Login(props) {
         <Text style={styles.text_heading}>Company</Text>
       ) : null}
       <View style={styles.second_container}>
-        <Text style={styles.text}>Welcome!</Text>
-
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="Enter Email"
           onChangeText={(value) => setEmail(value)}
         />
-
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          onChangeText={(value) => setPassword(value)}
-        />
         <Pressable
-          title="Login"
+          title="sent OTP"
           style={styles.pressable_btn}
-          onPress={handleLogin}
+          onPress={handleSendOtp}
         >
-          <Text style={styles.pressable_btn_text}>Login</Text>
+          <Text style={styles.pressable_btn_text}>Send OTP</Text>
         </Pressable>
-      </View>
-
-      <View styles={styles.bottom_container}>
-        <Text style={styles.forgot_btn} onPress={handleForgotPass}>
-          Forgot password?
-        </Text>
-      </View>
-
-      {showGoogleFacebook ? (
-        <View style={styles.login_with_google_or_facebook}>
-          <Pressable
-            title="Login"
-            style={styles.pressable_btn_outlined}
-            onPress={handleGoogleLogin}
-          >
-            <Image
-              source={require("../assets/google.png")}
-              style={styles.png_icon}
-            />
-            <Text style={styles.pressable_btn_text_outlined}>Google</Text>
-          </Pressable>
-
-          <Pressable
-            title="Login"
-            style={styles.pressable_btn_outlined}
-            onPress={handleFacebookLogin}
-          >
-            <Image
-              source={require("../assets/facebook.png")}
-              style={styles.png_icon}
-            />
-            <Text style={styles.pressable_btn_text_outlined}>Facebook</Text>
-          </Pressable>
-        </View>
-      ) : null}
-
-      <View styles={styles.bottom_last_container}>
-        <Text style={{ top: 105 }}>
-          Don't have an account?
-          <Text style={styles.signup_text} onPress={handleSignup}>
-            {" "}
-            Sign Up
-          </Text>
-        </Text>
       </View>
     </View>
   );
@@ -156,7 +89,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   pressable_btn: {
-    top: 15,
+    marginTop: 10,
     paddingVertical: 13,
     borderRadius: 10,
     elevation: 3,
@@ -227,4 +160,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default ForgotPassword;

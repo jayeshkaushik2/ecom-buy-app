@@ -1,31 +1,50 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { CreateUserApi } from "../../context/Apis";
+import AuthContext from "../../context/AuthContext";
 
 const colors = {
-  background_color: "#0288d1",
+  background_color: "black",
 };
 
 function Signup(props) {
   const [showCompanyName, setShowCompanyName] = React.useState(true);
-  const [showSign_With_Google_Facebook, setShowSign_With_Google_Facebook] =
-    React.useState(true);
-
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
+  const [mobile, setMobile] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setconfirmPassword] = React.useState("");
 
+  const postData = async (data) => {
+    try {
+      await CreateUserApi({ userData: data });
+      alert("user created");
+      props?.navigation.navigate("verify_newuser_otp");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleSigup = () => {
-    console.log(
-      firstName,
-      lastName,
-      username,
-      email,
-      password,
-      confirmPassword
-    );
+    if (password !== confirmPassword) {
+      alert("your passwords are not matching!");
+    } else {
+      let data = {
+        first_name: firstName,
+        last_name: lastName,
+        username: username,
+        email: email,
+        mobile: mobile,
+        password: password,
+      };
+      postData(data);
+    }
+  };
+
+  const handleLogin = () => {
+    props?.navigation.navigate("login");
   };
 
   return (
@@ -48,6 +67,12 @@ function Signup(props) {
           style={styles.input}
           placeholder="Email"
           onChangeText={(value) => setEmail(value)}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Mobile"
+          onChangeText={(value) => setMobile(value)}
         />
 
         <TextInput
@@ -80,7 +105,10 @@ function Signup(props) {
       <View styles={styles.bottom_last_container}>
         <Text style={{ top: 40 }}>
           already have an account?
-          <Text style={styles.signup_text}> Log in</Text>
+          <Text style={styles.signup_text} onPress={handleLogin}>
+            {" "}
+            Log in
+          </Text>
         </Text>
       </View>
     </View>
@@ -91,7 +119,6 @@ const styles = StyleSheet.create({
   container: {
     fontSize: 20,
     flex: 1,
-    top: -40,
     justifyContent: "center",
     alignItems: "center",
   },
