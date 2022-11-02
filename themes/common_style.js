@@ -113,6 +113,29 @@ const CommonStyles = () => {
       fontSize: 15,
       color: colors.background_color,
     },
+
+    // Custom App Bar styling
+    CustomAppBar: {
+      container: {
+        backgroundColor: colors.background_color,
+        height: 100,
+      },
+      search_bar_input: {
+        fontSize: 17,
+      },
+      search_bar: {
+        width: "85%",
+        marginLeft: 4,
+      },
+      mic: {},
+    },
+
+    // homepage styling
+    HomepageStyles: {
+      container: {
+        paddingTop: Platform.OS === "android" ? 25 : 0,
+      },
+    },
   });
 
   return styles;
