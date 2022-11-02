@@ -147,6 +147,10 @@ const CommonStyles = () => {
         height: "100%",
         paddingTop: Platform.OS === "android" ? 25 : 0,
       },
+      profile_banner: { top: 0, margin: -25 },
+      profile_user_info: { flex: 1, flexDirection: "row", marginTop: -20 },
+      avatar: { marginLeft: 10 },
+      user_name: { top: 50, marginLeft: 40 },
     },
   });
 
