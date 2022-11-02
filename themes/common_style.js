@@ -45,7 +45,6 @@ const CommonStyles = () => {
     },
     custom_btn: {
       top: 15,
-      paddingVertical: 10,
       borderRadius: 10,
       elevation: 3,
       backgroundColor: colors.background_color,
@@ -53,6 +52,8 @@ const CommonStyles = () => {
     },
     custom_btn_text: {
       fontSize: 17,
+      paddingVertical: 10,
+      width: "100%",
       fontWeight: "bold",
       letterSpacing: 0.5,
       color: "white",

@@ -12,7 +12,7 @@ import { TextInput, Button } from "react-native-paper";
 import CommonStyles from "../../themes/common_style";
 
 function Login(props) {
-  // const { loginUser } = useContext(AuthContext);
+  const { loginUser } = useContext(AuthContext);
   // styles
   const styles = CommonStyles();
   // variables used
@@ -21,13 +21,19 @@ function Login(props) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [showPassword, setShowPassword] = React.useState(false);
+  const [showLoading, setShowLoading] = React.useState(false);
 
   const handleLogin = () => {
-    let data = {
-      email: email,
-      password: password,
-    };
-    // loginUser(data);
+    try {
+      setShowLoading(true);
+      let data = {
+        email: email,
+        password: password,
+      };
+      loginUser(data);
+    } catch (error) {
+      setShowLoading(false);
+    }
   };
 
   const handleForgotPass = () => {
@@ -94,6 +100,7 @@ function Login(props) {
           mode="contained"
           style={styles.custom_btn}
           labelStyle={styles.custom_btn_text}
+          loading={showLoading}
           onPress={handleLogin}
         >
           Login

@@ -27,7 +27,8 @@ function ForgotPassword(props) {
     let data = {
       email: email,
     };
-    postData(data);
+    console.log("running...", data);
+    // postData(data);
   };
 
   return (
