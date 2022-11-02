@@ -5,6 +5,7 @@ import { Text, View } from "react-native";
 import CommonStyles from "../../themes/common_style";
 import CustomAppBar from "../components/CustomAppBar";
 import HomeCategory from "../components/HomeCategory";
+import HomeImages from "../components/HomeImages";
 
 function Home(props) {
   const styles = CommonStyles();
@@ -12,6 +13,7 @@ function Home(props) {
     <View style={styles.HomepageStyles.container}>
       <CustomAppBar />
       <HomeCategory />
+      <HomeImages />
     </View>
   );
 }
