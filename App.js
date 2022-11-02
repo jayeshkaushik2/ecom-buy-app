@@ -18,7 +18,7 @@ export default function App() {
       <NavigationContainer>
         <AuthState>
           {/* AUthentication pages start */}
-          <Stack.Navigator initialRouteName="login">
+          <Stack.Navigator initialRouteName="home">
             <Stack.Screen
               name="login"
               component={Login}
