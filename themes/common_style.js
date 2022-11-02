@@ -130,9 +130,21 @@ const CommonStyles = () => {
       mic: {},
     },
 
+    CustomBottomAppbar: {
+      backgroundColor: "white",
+    },
+
     // homepage styling
     HomepageStyles: {
       container: {
+        height: "100%",
+      },
+    },
+
+    // customer profile styling
+    CustomerProfileStyles: {
+      container: {
+        height: "100%",
         paddingTop: Platform.OS === "android" ? 25 : 0,
       },
     },

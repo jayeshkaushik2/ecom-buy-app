@@ -8,7 +8,7 @@ import CustomAppBar from "../components/CustomAppBar";
 function Home(props) {
   const styles = CommonStyles();
   return (
-    <View>
+    <View style={styles.HomepageStyles.container}>
       <CustomAppBar />
     </View>
   );

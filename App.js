@@ -10,6 +10,7 @@ import Home from "./app/screens/Home";
 import VerifyNewUserOtp from "./app/screens/VerifyNewUserOtp";
 import ForgotPassword from "./app/screens/ForgotPassword";
 import VerifyForgotPassOtp from "./app/screens/VerifyForgotPassOtp";
+import MainScreen from "./app/screens/MainScreen";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -18,7 +19,7 @@ export default function App() {
       <NavigationContainer>
         <AuthState>
           {/* AUthentication pages start */}
-          <Stack.Navigator initialRouteName="home">
+          <Stack.Navigator initialRouteName="mainscreen">
             <Stack.Screen
               name="login"
               component={Login}
@@ -45,6 +46,13 @@ export default function App() {
               options={{ headerShown: false }}
             />
             {/* Authentication pages end */}
+
+            <Stack.Screen
+              name="mainscreen"
+              component={MainScreen}
+              options={{ headerShown: false }}
+            />
+
             <Stack.Screen
               name="home"
               component={Home}
