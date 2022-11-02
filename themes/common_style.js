@@ -134,6 +134,25 @@ const CommonStyles = () => {
       backgroundColor: "white",
     },
 
+    HomeCategory: {
+      imgContainer: {
+        width: 50,
+        height: 50,
+        marginRight: 15,
+        marginTop: "15%",
+        marginLeft: 5,
+      },
+      items: {
+        marginBottom: 2,
+        marginRight: 25,
+        marginLeft: 25,
+      },
+      catContainer: {
+        alignItems: "center",
+        justifyContent: "center",
+      },
+    },
+
     // homepage styling
     HomepageStyles: {
       container: {
