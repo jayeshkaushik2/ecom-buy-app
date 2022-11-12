@@ -55,9 +55,7 @@ function HomeImages(props) {
     <View
       style={{
         width: "100%",
-        marginTop: 10,
-        height: 200,
-        backgroundColor: "aqua",
+        height: 250,
       }}
     >
       <ScrollView horizontal={true} pagingEnabled={true}>
