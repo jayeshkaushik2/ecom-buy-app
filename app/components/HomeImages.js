@@ -66,7 +66,7 @@ function HomeImages(props) {
               onScrollEndDrag={(e) => handleClick(e, item)}
             >
               <Image
-                style={{ width: screenWidth, height: 200 }}
+                style={{ width: screenWidth, height: 245 }}
                 source={{
                   uri: `${ECOM_API_URL}${item?.image}`,
                 }}
