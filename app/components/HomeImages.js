@@ -8,9 +8,9 @@ function HomeImages(props) {
   const styles = CommonStyles();
   const [currentImage, setCurrentImage] = React.useState(1);
   const images = [
-    "../assets/universe1.jpg",
-    "../assets/universe2.jpg",
-    "../assets/universe3.jpg",
+    require("../assets/universe1.jpg"),
+    require("../assets/universe2.jpg"),
+    require("../assets/universe3.jpg"),
   ];
 
   return (
