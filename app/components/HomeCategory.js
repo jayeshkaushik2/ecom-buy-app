@@ -1,26 +1,29 @@
 import { Image, Text, View, FlatList, ScrollView } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import CommonStyles from "../../themes/common_style";
+import { getSubCategory } from "../../context/Apis";
 
 const HomeCategory = () => {
-  const [images, SetImages] = useState([
-    require("../assets/facebook.png"),
-    require("../assets/google.png"),
-    require("../assets/facebook.png"),
-    require("../assets/google.png"),
-    require("../assets/facebook.png"),
-    require("../assets/google.png"),
-    require("../assets/facebook.png"),
-    require("../assets/google.png"),
-    require("../assets/facebook.png"),
-    require("../assets/google.png"),
-    require("../assets/facebook.png"),
-    require("../assets/google.png"),
-    require("../assets/facebook.png"),
-    require("../assets/google.png"),
-  ]);
-
   const styles = CommonStyles();
+  const [SubCategory, setSubCategory] = React.useState(null);
+
+  const getData = async () => {
+    try {
+      console.log("running API...");
+      const data = await getSubCategory();
+      setSubCategory(data?.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  React.useEffect(() => {
+    getData();
+  }, []);
+
+  const handleSubCategoryClick = (e) => {
+    console.log("e", e);
+  };
 
   return (
     <View style={styles.catContainer}>
@@ -39,13 +42,14 @@ const HomeCategory = () => {
           }}
           horizontal
           showsHorizontalScrollIndicator={true}
-          data={images}
+          data={SubCategory}
           renderItem={({ item, index }) => (
             <>
               <Image
                 style={styles.HomeCategory.imgContainer}
-                source={item}
+                source={{ uri: item?.image }}
                 key={index}
+                onPress={handleSubCategoryClick}
               />
               <Text
                 style={{
@@ -53,9 +57,10 @@ const HomeCategory = () => {
                   bottom: -1,
                   textAlign: "center",
                   marginLeft: 4,
+                  maxWidth: 54,
                 }}
               >
-                Mobiles
+                {item?.name}
               </Text>
             </>
           )}
