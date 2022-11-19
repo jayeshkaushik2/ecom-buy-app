@@ -17,6 +17,7 @@ export async function getSubCategory() {
     method: "GET",
   });
   let sub_category_data = await response.json();
+  console.log("sub category data", sub_category_data);
   return sub_category_data;
 }
 
@@ -25,11 +26,7 @@ export async function getProductData() {
     method: "GET",
   });
   let product_data = await response.json();
-  if (response.ok) {
-    return product_data;
-  } else {
-    throw response;
-  }
+  return product_data;
 }
 
 export async function getProductData_WithFilter({

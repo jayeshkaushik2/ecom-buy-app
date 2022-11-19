@@ -1,7 +1,7 @@
 import { StyleSheet, Platform } from "react-native";
 
 const colors = {
-  background_color: "orange",
+  background_color: "#2196f3",
 };
 
 const CommonStyles = () => {
@@ -157,6 +157,7 @@ const CommonStyles = () => {
     HomepageStyles: {
       container: {
         height: "100%",
+        overflow: "scroll",
       },
     },
 
@@ -170,6 +171,54 @@ const CommonStyles = () => {
       profile_user_info: { flex: 1, flexDirection: "row", marginTop: -20 },
       avatar: { marginLeft: 10 },
       user_name: { top: 50, marginLeft: 40 },
+    },
+
+    ProductCardStyles: {
+      container: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: "#e0e0e0",
+        paddingBottom: 10,
+        paddingTop: 10,
+      },
+      card: {
+        width: "97%",
+        height: 320,
+        marginLeft: "auto",
+        marginRight: "auto",
+        backgroundColor: "white",
+        borderRadius: 10,
+        marginBottom: 5,
+      },
+      card_cover: {
+        height: 200,
+        width: "100%",
+        marginLeft: "auto",
+        marginRight: "auto",
+        borderTopLeftRadius: 10,
+        borderTopEndRadius: 10,
+        borderBottomLeftRadius: 0,
+        borderBottomEndRadius: 0,
+      },
+      card_action: {
+        paddingTop: 10,
+        paddingBottom: 10,
+        width: "100%",
+        marginLeft: "auto",
+        marginRight: "auto",
+      },
+      add_to_cart_btn: {
+        backgroundColor: colors.background_color,
+      },
+      add_to_cart_btn_label: {
+        backgroundColor: colors.background_color,
+      },
+      buy_btn: {
+        backgroundColor: colors.background_color,
+      },
+      buy_btn_label: {
+        backgroundColor: colors.background_color,
+      },
     },
   });
 
