@@ -4,6 +4,135 @@ const colors = {
   background_color: "#2196f3",
 };
 
+const customAppBarStyles = {
+  container: {
+    backgroundColor: colors.background_color,
+    height: 100,
+  },
+  search_bar_input: {
+    fontSize: 17,
+  },
+  search_bar: {
+    width: "85%",
+    marginLeft: 4,
+  },
+  mic: {},
+};
+
+const LoginActionStyles = {
+  loginContainer: {
+    flexDirection: "row",
+    width: "100%",
+    padding: 10,
+  },
+  btn: {
+    width: "50%",
+    backgroundColor: colors.background_color,
+    marginRight: 5,
+    borderRadius: 100,
+  },
+  btn_text: {
+    paddingVertical: 10,
+    fontSize: 17,
+    width: "100%",
+    fontWeight: "bold",
+    letterSpacing: 0.5,
+    color: "white",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+};
+
+const CustomerProfileStyles = {
+  LoginAction: LoginActionStyles,
+  container: {
+    height: "100%",
+    paddingTop: Platform.OS === "android" ? 25 : 0,
+  },
+  profile_banner: { top: 0, margin: -25 },
+  profile_user_info: { flex: 1, flexDirection: "row", marginTop: -20 },
+  avatar: { marginLeft: 10 },
+  user_name: { top: 50, marginLeft: 40 },
+};
+
+const ProductCardStyles = {
+  container: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#e0e0e0",
+    paddingBottom: 10,
+    paddingTop: 10,
+  },
+  card: {
+    width: "97%",
+    height: 320,
+    marginLeft: "auto",
+    marginRight: "auto",
+    backgroundColor: "white",
+    borderRadius: 10,
+    marginBottom: 5,
+  },
+  card_cover: {
+    height: 200,
+    width: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    borderTopLeftRadius: 10,
+    borderTopEndRadius: 10,
+    borderBottomLeftRadius: 0,
+    borderBottomEndRadius: 0,
+  },
+  card_action: {
+    paddingTop: 10,
+    paddingBottom: 10,
+    width: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+  add_to_cart_btn: {
+    backgroundColor: colors.background_color,
+  },
+  add_to_cart_btn_label: {
+    backgroundColor: colors.background_color,
+  },
+  buy_btn: {
+    backgroundColor: colors.background_color,
+  },
+  buy_btn_label: {
+    backgroundColor: colors.background_color,
+  },
+};
+
+const CustomBottomAppbarStyles = {
+  backgroundColor: "white",
+};
+
+const HomeCategoryStyles = {
+  imgContainer: {
+    width: 50,
+    height: 50,
+    marginRight: 15,
+    marginTop: "15%",
+    marginLeft: 5,
+  },
+  items: {
+    marginBottom: 2,
+    marginRight: 25,
+    marginLeft: 25,
+  },
+  catContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+};
+
+const HomePageStyles = {
+  container: {
+    height: "100%",
+    overflow: "scroll",
+  },
+};
+
 const CommonStyles = () => {
   const styles = StyleSheet.create({
     container: {
@@ -114,112 +243,17 @@ const CommonStyles = () => {
       color: colors.background_color,
     },
 
-    // Custom App Bar styling
-    CustomAppBar: {
-      container: {
-        backgroundColor: colors.background_color,
-        height: 100,
-      },
-      search_bar_input: {
-        fontSize: 17,
-      },
-      search_bar: {
-        width: "85%",
-        marginLeft: 4,
-      },
-      mic: {},
-    },
+    CustomAppBar: customAppBarStyles,
 
-    CustomBottomAppbar: {
-      backgroundColor: "white",
-    },
+    CustomBottomAppbarStyles: CustomBottomAppbarStyles,
 
-    HomeCategory: {
-      imgContainer: {
-        width: 50,
-        height: 50,
-        marginRight: 15,
-        marginTop: "15%",
-        marginLeft: 5,
-      },
-      items: {
-        marginBottom: 2,
-        marginRight: 25,
-        marginLeft: 25,
-      },
-      catContainer: {
-        alignItems: "center",
-        justifyContent: "center",
-      },
-    },
+    HomeCategory: HomeCategoryStyles,
 
-    // homepage styling
-    HomepageStyles: {
-      container: {
-        height: "100%",
-        overflow: "scroll",
-      },
-    },
+    HomePageStyles: HomePageStyles,
 
-    // customer profile styling
-    CustomerProfileStyles: {
-      container: {
-        height: "100%",
-        paddingTop: Platform.OS === "android" ? 25 : 0,
-      },
-      profile_banner: { top: 0, margin: -25 },
-      profile_user_info: { flex: 1, flexDirection: "row", marginTop: -20 },
-      avatar: { marginLeft: 10 },
-      user_name: { top: 50, marginLeft: 40 },
-    },
+    CustomerProfileStyles: CustomerProfileStyles,
 
-    ProductCardStyles: {
-      container: {
-        width: "100%",
-        height: "100%",
-        backgroundColor: "#e0e0e0",
-        paddingBottom: 10,
-        paddingTop: 10,
-      },
-      card: {
-        width: "97%",
-        height: 320,
-        marginLeft: "auto",
-        marginRight: "auto",
-        backgroundColor: "white",
-        borderRadius: 10,
-        marginBottom: 5,
-      },
-      card_cover: {
-        height: 200,
-        width: "100%",
-        marginLeft: "auto",
-        marginRight: "auto",
-        borderTopLeftRadius: 10,
-        borderTopEndRadius: 10,
-        borderBottomLeftRadius: 0,
-        borderBottomEndRadius: 0,
-      },
-      card_action: {
-        paddingTop: 10,
-        paddingBottom: 10,
-        width: "100%",
-        marginLeft: "auto",
-        marginRight: "auto",
-      },
-      add_to_cart_btn: {
-        backgroundColor: colors.background_color,
-      },
-      add_to_cart_btn_label: {
-        backgroundColor: colors.background_color,
-      },
-      buy_btn: {
-        backgroundColor: colors.background_color,
-      },
-      buy_btn_label: {
-        backgroundColor: colors.background_color,
-      },
-    },
+    ProductCardStyles: ProductCardStyles,
   });
 
   return styles;

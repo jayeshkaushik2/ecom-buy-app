@@ -11,7 +11,7 @@ import ProductCard from "../components/ProductCard";
 function Home(props) {
   const styles = CommonStyles();
   return (
-    <View style={styles.HomepageStyles.container}>
+    <View style={styles.HomePageStyles.container}>
       <CustomAppBar />
       <ScrollView>
         <HomeCategory />

@@ -15,7 +15,7 @@ function MainScreen(props) {
     <Tab.Navigator
       initialRouteName="home"
       labeled={false}
-      barStyle={styles.CustomBottomAppbar}
+      barStyle={styles.CustomBottomAppbarStyles}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;

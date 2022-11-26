@@ -14,42 +14,93 @@ import {
 // local imports
 import CustomAppBar from "../components/CustomAppBar";
 import CommonStyles from "../../themes/common_style";
+import AuthContext from "../../context/AuthContext";
 
 const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
 
-function CustomerProfile(props) {
+function CustomerProfileStyles(props) {
   const styles = CommonStyles();
+  let { user, login } = React.useContext(AuthContext);
+
+  const getData = async () => {
+    try {
+      let token = user?.AuthToken ? `Bearer ${user?.AuthToken?.access}` : null;
+      if (
+        token !== null &&
+        user.Login !== "Login" &&
+        user?.AuthToken !== null
+      ) {
+        const data = await getProfileData({ token: token });
+        console.log(data);
+        setUserData(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(login);
+
+  React.useEffect(() => {
+    getData();
+  }, []);
+
+  const handleLoginPress = () => {
+    props?.navigation.navigate("login");
+  };
+
+  const handleSignUpPress = () => {
+    props?.navigation.navigate("signup");
+  };
 
   return (
     <>
       <CustomAppBar />
-      <View style={styles.CustomerProfileStyles.container}>
-        <Card style={styles.CustomerProfileStyles.profile_banner}>
-          <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
-        </Card>
-        <View style={styles.CustomerProfileStyles.profile_user_info}>
-          <Avatar.Icon
-            size={100}
-            icon="camera"
-            style={styles.CustomerProfileStyles.avatar}
-          />
-          <Text
-            variant="titleLarge"
-            style={styles.CustomerProfileStyles.user_name}
-          >
-            Customer name
-          </Text>
+      {login !== "Login" ? (
+        <View style={styles.CustomerProfileStyles.container}>
+          <Card style={styles.CustomerProfileStyles.profile_banner}>
+            <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
+          </Card>
+          <View style={styles.CustomerProfileStyles.profile_user_info}>
+            <Avatar.Icon
+              size={100}
+              icon="camera"
+              style={styles.CustomerProfileStyles.avatar}
+            />
+            <Text
+              variant="titleLarge"
+              style={styles.CustomerProfileStyles.user_name}
+            >
+              Customer name
+            </Text>
+          </View>
         </View>
-        {/* <Button
-          icon="login"
-          mode="contained"
-          style={{ alignItem: "flex-end", }}
+      ) : (
+        <View
+          style={styles?.CustomerProfileStyles?.LoginAction?.loginContainer}
         >
-          Login
-        </Button> */}
-      </View>
+          <Button
+            icon="login"
+            mode="contained"
+            labelStyle={styles?.CustomerProfileStyles?.LoginAction?.btn_text}
+            style={styles?.CustomerProfileStyles?.LoginAction?.btn}
+            onPress={handleLoginPress}
+          >
+            Login
+          </Button>
+          <Button
+            icon="login"
+            mode="contained"
+            labelStyle={styles?.CustomerProfileStyles?.LoginAction?.btn_text}
+            style={styles?.CustomerProfileStyles?.LoginAction?.btn}
+            onPress={handleSignUpPress}
+          >
+            Sign up
+          </Button>
+        </View>
+      )}
     </>
   );
 }
 
-export default CustomerProfile;
+export default CustomerProfileStyles;
