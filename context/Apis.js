@@ -17,7 +17,6 @@ export async function getSubCategory() {
     method: "GET",
   });
   let sub_category_data = await response.json();
-  console.log("sub category data", sub_category_data);
   return sub_category_data;
 }
 
