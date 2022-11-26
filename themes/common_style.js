@@ -70,7 +70,7 @@ const ProductCardStyles = {
     marginRight: "auto",
     backgroundColor: "white",
     borderRadius: 10,
-    marginBottom: 5,
+    marginBottom: 20,
   },
   card_cover: {
     height: 200,
@@ -86,20 +86,31 @@ const ProductCardStyles = {
     paddingTop: 10,
     paddingBottom: 10,
     width: "100%",
+  },
+  add_to_cart_btn: {
+    fontSize: 17,
+    width: "100%",
+    letterSpacing: 0.5,
+    color: "white",
     marginLeft: "auto",
     marginRight: "auto",
   },
-  add_to_cart_btn: {
-    backgroundColor: colors.background_color,
-  },
   add_to_cart_btn_label: {
-    backgroundColor: colors.background_color,
+    fontSize: 17,
+    width: "50%",
+    letterSpacing: 0.5,
+    color: "white",
   },
   buy_btn: {
-    backgroundColor: colors.background_color,
+    borderRadius: 10,
+    elevation: 3,
+    alignItems: "center",
   },
   buy_btn_label: {
-    backgroundColor: colors.background_color,
+    fontSize: 17,
+    width: "100%",
+    letterSpacing: 0.5,
+    color: "white",
   },
 };
 
@@ -242,6 +253,8 @@ const CommonStyles = () => {
       fontSize: 15,
       color: colors.background_color,
     },
+
+    colors: colors,
 
     CustomAppBar: customAppBarStyles,
 

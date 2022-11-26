@@ -60,8 +60,7 @@ function ProductCard(props) {
                   <Button
                     mode="contained"
                     icon="cart"
-                    style={styles.ProductCardStyles?.add_to_cart_btn}
-                    labelStyle={styles.ProductCardStyles?.add_to_cart_btn_label}
+                    buttonColor={styles?.colors?.background_color}
                     onPress={handleAddToCart}
                   >
                     Cart
@@ -69,8 +68,9 @@ function ProductCard(props) {
                   <Button
                     mode="contained"
                     icon="cart"
-                    style={styles.ProductCardStyles?.buy_btn}
-                    labelStyle={styles.ProductCardStyles?.buy_btn_label}
+                    buttonColor={styles?.colors?.background_color}
+                    // style={styles.ProductCardStyles?.add_to_cart_btn}
+                    // labelStyle={styles.ProductCardStyles?.add_to_cart_btn_label}
                     onPress={handleBuy}
                   >
                     Buy
