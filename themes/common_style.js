@@ -1,7 +1,8 @@
 import { StyleSheet, Platform } from "react-native";
 
 const colors = {
-  background_color: "#2196f3",
+  background_color: "#ff9800",
+  icon_color: "white",
 };
 
 const customAppBarStyles = {
@@ -16,7 +17,7 @@ const customAppBarStyles = {
     width: "85%",
     marginLeft: 4,
   },
-  mic: {},
+  mic: { color: "white" },
 };
 
 const LoginActionStyles = {
@@ -115,7 +116,7 @@ const ProductCardStyles = {
 };
 
 const CustomBottomAppbarStyles = {
-  backgroundColor: "white",
+  backgroundColor: "#e0e0e0",
 };
 
 const HomeCategoryStyles = {

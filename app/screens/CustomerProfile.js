@@ -46,11 +46,11 @@ function CustomerProfileStyles(props) {
   }, []);
 
   const handleLoginPress = () => {
-    props?.navigation.navigate("login");
+    props?.navigation?.navigate("login");
   };
 
   const handleSignUpPress = () => {
-    props?.navigation.navigate("signup");
+    props?.navigation?.navigate("signup");
   };
 
   return (

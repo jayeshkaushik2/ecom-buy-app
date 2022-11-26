@@ -22,8 +22,8 @@ function AppBar(props) {
       />
       <Appbar.Action
         icon="microphone"
+        color={styles?.colors?.icon_color}
         size={30}
-        style={styles.CustomAppBar.mic}
         onPress={() => {
           console.log("mic");
         }}
