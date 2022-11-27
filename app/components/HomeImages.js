@@ -16,7 +16,6 @@ function HomeImages(props) {
     try {
       console.log("running API...");
       const homepageData = await getHomepageData();
-      console.log(homepageData?.images);
       setImages(homepageData?.images);
       setHomepageData(homepageData);
     } catch (error) {
@@ -26,12 +25,12 @@ function HomeImages(props) {
 
   React.useEffect(() => {
     getData();
-    let interval = setInterval(() => {
-      console.log("pressed");
-    }, 5 * 1000);
-    return () => {
-      clearInterval(interval);
-    };
+    // let interval = setInterval(() => {
+    //   console.log("pressed");
+    // }, 5 * 1000);
+    // return () => {
+    //   clearInterval(interval);
+    // };
   }, []);
 
   function bottom(e) {

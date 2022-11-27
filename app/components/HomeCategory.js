@@ -26,7 +26,7 @@ const HomeCategory = () => {
   };
 
   return (
-    <View style={styles.catContainer}>
+    <View>
       <ScrollView
         contentContainerStyle={{
           flexDirection: "column",

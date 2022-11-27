@@ -33,7 +33,7 @@ const AuthState = ({ children }) => {
     }
   };
 
-  let loginUser = async (user_info) => {
+  let loginUser = async (user_info, props, next_page) => {
     let response = await fetch(`${ECOM_API_URL}/token/`, {
       method: "post",
       headers: { "content-type": "application/json" },
@@ -45,6 +45,7 @@ const AuthState = ({ children }) => {
       setUser(jwt_decode(data.access));
       setUserLogin("Logout");
       AsyncStorageFunction("set", "AuthToken", JSON.stringify(data));
+      props?.navigation.navigate(next_page);
     } else {
       alert("unable to login");
     }
@@ -66,12 +67,13 @@ const AuthState = ({ children }) => {
     }
   };
 
-  const logoutUser = () => {
+  const logoutUser = (props, next_page) => {
     setAuthToken(null);
     setUser(null);
     setUserLogin("Login");
     AsyncStorageFunction("remove", "AuthToken", "");
     AsyncStorageFunction("remove", "Cart", "");
+    props?.navigation.navigate(next_page);
   };
 
   let userData = {

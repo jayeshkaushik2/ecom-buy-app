@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
+  ScrollView,
 } from "react-native";
 import AuthContext from "../../context/AuthContext";
 import { TextInput, Button } from "react-native-paper";
@@ -30,7 +30,7 @@ function Login(props) {
         email: email,
         password: password,
       };
-      loginUser(data);
+      loginUser(data, props, "mainscreen");
     } catch (error) {
       setShowLoading(false);
     }
@@ -53,7 +53,8 @@ function Login(props) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    // <ScrollView>
+    <View style={styles.container}>
       {showCompanyName ? (
         <Text style={styles.text_heading}>Company</Text>
       ) : null}
@@ -150,7 +151,8 @@ function Login(props) {
           </Text>
         </Text>
       </View>
-    </SafeAreaView>
+    </View>
+    // </ScrollView>
   );
 }
 

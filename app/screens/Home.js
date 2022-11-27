@@ -12,7 +12,6 @@ function Home(props) {
   const styles = CommonStyles();
   return (
     <View style={styles.HomePageStyles.container}>
-      <CustomAppBar />
       <ScrollView>
         <HomeCategory />
         <HomeImages />

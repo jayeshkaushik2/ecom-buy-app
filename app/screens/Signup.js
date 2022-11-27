@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { CreateUserApi } from "../../context/Apis";
 import AuthContext from "../../context/AuthContext";
 import { Button, TextInput } from "react-native-paper";
@@ -54,127 +54,129 @@ function Signup(props) {
   };
 
   return (
-    <View style={styles.container}>
-      {showCompanyName ? (
-        <Text style={styles.text_heading}>Company</Text>
-      ) : null}
-      <View style={styles.second_container}>
-        <TextInput
-          mode="outlined"
-          selectionColor="black"
-          outlineColor="#e0e0e0"
-          activeOutlineColor="#e0e0e0"
-          dense={true}
-          outlineStyle={styles.custom_outlineStyle}
-          style={styles.input}
-          placeholder="First name"
-          onChangeText={(value) => setFirstName(value)}
-        />
-        <TextInput
-          mode="outlined"
-          selectionColor="black"
-          outlineColor="#e0e0e0"
-          activeOutlineColor="#e0e0e0"
-          dense={true}
-          outlineStyle={styles.custom_outlineStyle}
-          style={styles.input}
-          placeholder="Last name"
-          onChangeText={(value) => setLastName(value)}
-        />
-        <TextInput
-          mode="outlined"
-          selectionColor="black"
-          outlineColor="#e0e0e0"
-          activeOutlineColor="#e0e0e0"
-          dense={true}
-          outlineStyle={styles.custom_outlineStyle}
-          style={styles.input}
-          placeholder="Email"
-          onChangeText={(value) => setEmail(value)}
-        />
+    <ScrollView>
+      <View style={styles.container}>
+        {showCompanyName ? (
+          <Text style={styles.text_heading}>Company</Text>
+        ) : null}
+        <View style={styles.second_container}>
+          <TextInput
+            mode="outlined"
+            selectionColor="black"
+            outlineColor="#e0e0e0"
+            activeOutlineColor="#e0e0e0"
+            dense={true}
+            outlineStyle={styles.custom_outlineStyle}
+            style={styles.input}
+            placeholder="First name"
+            onChangeText={(value) => setFirstName(value)}
+          />
+          <TextInput
+            mode="outlined"
+            selectionColor="black"
+            outlineColor="#e0e0e0"
+            activeOutlineColor="#e0e0e0"
+            dense={true}
+            outlineStyle={styles.custom_outlineStyle}
+            style={styles.input}
+            placeholder="Last name"
+            onChangeText={(value) => setLastName(value)}
+          />
+          <TextInput
+            mode="outlined"
+            selectionColor="black"
+            outlineColor="#e0e0e0"
+            activeOutlineColor="#e0e0e0"
+            dense={true}
+            outlineStyle={styles.custom_outlineStyle}
+            style={styles.input}
+            placeholder="Email"
+            onChangeText={(value) => setEmail(value)}
+          />
 
-        <TextInput
-          mode="outlined"
-          selectionColor="black"
-          outlineColor="#e0e0e0"
-          activeOutlineColor="#e0e0e0"
-          dense={true}
-          outlineStyle={styles.custom_outlineStyle}
-          style={styles.input}
-          placeholder="Mobile"
-          onChangeText={(value) => setMobile(value)}
-        />
+          <TextInput
+            mode="outlined"
+            selectionColor="black"
+            outlineColor="#e0e0e0"
+            activeOutlineColor="#e0e0e0"
+            dense={true}
+            outlineStyle={styles.custom_outlineStyle}
+            style={styles.input}
+            placeholder="Mobile"
+            onChangeText={(value) => setMobile(value)}
+          />
 
-        <TextInput
-          mode="outlined"
-          selectionColor="black"
-          outlineColor="#e0e0e0"
-          activeOutlineColor="#e0e0e0"
-          dense={true}
-          outlineStyle={styles.custom_outlineStyle}
-          style={styles.input}
-          placeholder="Username"
-          onChangeText={(value) => setUsername(value)}
-        />
+          <TextInput
+            mode="outlined"
+            selectionColor="black"
+            outlineColor="#e0e0e0"
+            activeOutlineColor="#e0e0e0"
+            dense={true}
+            outlineStyle={styles.custom_outlineStyle}
+            style={styles.input}
+            placeholder="Username"
+            onChangeText={(value) => setUsername(value)}
+          />
 
-        <TextInput
-          mode="outlined"
-          selectionColor="black"
-          outlineColor="#e0e0e0"
-          activeOutlineColor="#e0e0e0"
-          secureTextEntry
-          dense={true}
-          outlineStyle={styles.custom_outlineStyle}
-          style={styles.input}
-          placeholder="Password"
-          onChangeText={(value) => setPassword(value)}
-        />
+          <TextInput
+            mode="outlined"
+            selectionColor="black"
+            outlineColor="#e0e0e0"
+            activeOutlineColor="#e0e0e0"
+            secureTextEntry
+            dense={true}
+            outlineStyle={styles.custom_outlineStyle}
+            style={styles.input}
+            placeholder="Password"
+            onChangeText={(value) => setPassword(value)}
+          />
 
-        <TextInput
-          mode="outlined"
-          selectionColor="black"
-          outlineColor="#e0e0e0"
-          activeOutlineColor="#e0e0e0"
-          dense={true}
-          outlineStyle={styles.custom_outlineStyle}
-          style={styles.input}
-          secureTextEntry={!showPassword}
-          placeholder="Password"
-          onChangeText={(value) => setPassword(value)}
-          right={
-            !showPassword ? (
-              <TextInput.Icon
-                icon="eye-off"
-                onPress={() => setShowPassword(true)}
-              />
-            ) : (
-              <TextInput.Icon
-                icon="eye"
-                onPress={() => setShowPassword(false)}
-              />
-            )
-          }
-        />
-        <Button
-          mode="contained"
-          style={styles.custom_btn}
-          labelStyle={styles.custom_btn_text}
-          onPress={handleSigup}
-        >
-          Create Account
-        </Button>
-      </View>
+          <TextInput
+            mode="outlined"
+            selectionColor="black"
+            outlineColor="#e0e0e0"
+            activeOutlineColor="#e0e0e0"
+            dense={true}
+            outlineStyle={styles.custom_outlineStyle}
+            style={styles.input}
+            secureTextEntry={!showPassword}
+            placeholder="Password"
+            onChangeText={(value) => setPassword(value)}
+            right={
+              !showPassword ? (
+                <TextInput.Icon
+                  icon="eye-off"
+                  onPress={() => setShowPassword(true)}
+                />
+              ) : (
+                <TextInput.Icon
+                  icon="eye"
+                  onPress={() => setShowPassword(false)}
+                />
+              )
+            }
+          />
+          <Button
+            mode="contained"
+            style={styles.custom_btn}
+            labelStyle={styles.custom_btn_text}
+            onPress={handleSigup}
+          >
+            Create Account
+          </Button>
+        </View>
 
-      <View styles={styles.bottom_last_container}>
-        <Text style={{ top: 40 }}>
-          already have an account?
-          <Text style={styles.signup_text} onPress={handleLogin}>
-            {" "}
-            Log in
+        <View styles={styles.bottom_last_container}>
+          <Text style={{ top: 40 }}>
+            already have an account?
+            <Text style={styles.signup_text} onPress={handleLogin}>
+              {" "}
+              Log in
+            </Text>
           </Text>
-        </Text>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 

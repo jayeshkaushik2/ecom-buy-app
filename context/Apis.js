@@ -25,6 +25,7 @@ export async function getProductData() {
     method: "GET",
   });
   let product_data = await response.json();
+  console.log(product_data);
   return product_data;
 }
 
@@ -188,10 +189,10 @@ export async function PostValidationNewUserOtp({ ValidateData: ValidateData }) {
 }
 
 // user profile apis -> GET
-export async function getProfileData({ token: token }) {
+export async function getProfileData() {
   let response = await fetch(`${ECOM_API_URL}/user-profile/`, {
     method: "GET",
-    headers: { Authorization: token },
+    // headers: { Authorization: token },
   });
   let user_data = await response.json();
   if (response.ok) {

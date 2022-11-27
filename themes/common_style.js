@@ -23,7 +23,6 @@ const customAppBarStyles = {
 const LoginActionStyles = {
   loginContainer: {
     flexDirection: "row",
-    width: "100%",
     padding: 10,
   },
   btn: {
@@ -45,13 +44,30 @@ const LoginActionStyles = {
 };
 
 const CustomerProfileStyles = {
-  LoginAction: LoginActionStyles,
-  container: {
-    height: "100%",
-    paddingTop: Platform.OS === "android" ? 25 : 0,
+  loginStyle: LoginActionStyles,
+  cardStyle: { margin: 0, padding: 0, backgroundColor: "blue" },
+  profileContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    flex: 1,
+    margin: 10,
   },
-  profile_banner: { top: 0, margin: -25 },
-  profile_user_info: { flex: 1, flexDirection: "row", marginTop: -20 },
+  name_text: { marginLeft: "auto", marginRight: "auto" },
+  btnContainer: { padding: 20 },
+  btnStyle: {
+    marginBottom: 5,
+    width: "100%",
+    backgroundColor: "black",
+    borderColor: "orange",
+  },
+  outlineBtnStyle: {
+    marginBottom: 5,
+    width: "100%",
+    borderColor: colors?.background_color,
+  },
+  btnLabelStyle: {
+    paddingVertical: 10,
+  },
   avatar: { marginLeft: 10 },
   user_name: { top: 50, marginLeft: 40 },
 };
@@ -141,16 +157,19 @@ const HomeCategoryStyles = {
 const HomePageStyles = {
   container: {
     height: "100%",
-    overflow: "scroll",
   },
+};
+
+const MainTheme = {
+  height: "100%",
+  backgroundColor: "#e0e0e0",
 };
 
 const CommonStyles = () => {
   const styles = StyleSheet.create({
+    MainTheme: MainTheme,
     container: {
       fontSize: 20,
-      flex: 1,
-      paddingTop: Platform.OS === "android" ? 25 : 0,
       justifyContent: "center",
       alignItems: "center",
     },
@@ -163,7 +182,6 @@ const CommonStyles = () => {
       color: colors.background_color,
       fontStyle: "italic",
       textShadowColor: "gray",
-      bottom: 50,
       fontWeight: "bold",
     },
     text: {

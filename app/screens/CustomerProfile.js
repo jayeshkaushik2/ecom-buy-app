@@ -1,6 +1,5 @@
 import React from "react";
 import { View } from "react-native";
-import AppDesgin from "react-native-vector-icons/AntDesign";
 import {
   Avatar,
   Button,
@@ -15,31 +14,31 @@ import {
 import CustomAppBar from "../components/CustomAppBar";
 import CommonStyles from "../../themes/common_style";
 import AuthContext from "../../context/AuthContext";
+import { getProfileData } from "../../context/Apis";
 
 const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
 
 function CustomerProfileStyles(props) {
   const styles = CommonStyles();
-  let { user, login } = React.useContext(AuthContext);
+  let { user, login, logoutUser, AuthToken } = React.useContext(AuthContext);
+  const [userData, setUserData] = React.useState(null);
 
   const getData = async () => {
     try {
-      let token = user?.AuthToken ? `Bearer ${user?.AuthToken?.access}` : null;
-      if (
-        token !== null &&
-        user.Login !== "Login" &&
-        user?.AuthToken !== null
-      ) {
-        const data = await getProfileData({ token: token });
-        console.log(data);
-        setUserData(data);
-      }
+      // let token = AuthToken?.access ? `Bearer ${AuthToken?.access}` : null;
+      // if (
+      //   token !== null &&
+      //   user.Login !== "Login" &&
+      //   user?.AuthToken !== null
+      // ) {
+      const data = await getProfileData();
+      console.log(">>>>>>>>>", data);
+      setUserData(data);
+      // }
     } catch (error) {
       console.log(error);
     }
   };
-
-  console.log(login);
 
   React.useEffect(() => {
     getData();
@@ -53,37 +52,83 @@ function CustomerProfileStyles(props) {
     props?.navigation?.navigate("signup");
   };
 
+  const handleLogoutPress = () => {
+    logoutUser(props, "mainscreen");
+  };
+
   return (
-    <>
-      <CustomAppBar />
+    <View style={styles?.MainTheme}>
       {login !== "Login" ? (
-        <View style={styles.CustomerProfileStyles.container}>
-          <Card style={styles.CustomerProfileStyles.profile_banner}>
-            <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
+        <>
+          <Card style={styles?.CustomerProfileStyles?.cardStyle}>
+            <Card.Cover source={{ uri: `${userData?.banner_image}` }} />
           </Card>
-          <View style={styles.CustomerProfileStyles.profile_user_info}>
-            <Avatar.Icon
-              size={100}
-              icon="camera"
-              style={styles.CustomerProfileStyles.avatar}
-            />
+          <View style={styles?.CustomerProfileStyles?.profileContainer}>
+            {userData?.profile_image ? (
+              <Avatar.Image
+                size={80}
+                source={{
+                  uri: `${userData?.profile_image}`,
+                }}
+              />
+            ) : (
+              <Avatar.Icon
+                icon="camera"
+                size={80}
+                source={require("../assets/universe1.jpg")}
+                style={styles.CustomerProfileStyles.avatar}
+              />
+            )}
             <Text
-              variant="titleLarge"
-              style={styles.CustomerProfileStyles.user_name}
+              variant="headlineMedium"
+              style={styles?.CustomerProfileStyles?.name_text}
             >
-              Customer name
+              {userData?.username}
             </Text>
           </View>
-        </View>
+
+          <View style={styles?.CustomerProfileStyles?.btnContainer}>
+            <Button
+              icon="pencil"
+              mode="outlined"
+              textColor="orange"
+              style={styles?.CustomerProfileStyles?.btnStyle}
+              labelStyle={{
+                paddingVertical: 10,
+              }}
+            >
+              Edit Profile
+            </Button>
+
+            <Button
+              icon="cart"
+              mode="outlined"
+              textColor="orange"
+              style={styles?.CustomerProfileStyles?.btnStyle}
+              labelStyle={styles?.CustomerProfileStyles?.btnLabelStyle}
+            >
+              Your Orders
+            </Button>
+
+            <Button
+              icon="logout"
+              mode="outlined"
+              textColor="orange"
+              style={styles?.CustomerProfileStyles?.outlineBtnStyle}
+              labelStyle={styles?.CustomerProfileStyles?.btnLabelStyle}
+              onPress={handleLogoutPress}
+            >
+              Logout
+            </Button>
+          </View>
+        </>
       ) : (
-        <View
-          style={styles?.CustomerProfileStyles?.LoginAction?.loginContainer}
-        >
+        <View style={styles?.CustomerProfileStyles?.loginStyle?.loginContainer}>
           <Button
             icon="login"
             mode="contained"
-            labelStyle={styles?.CustomerProfileStyles?.LoginAction?.btn_text}
-            style={styles?.CustomerProfileStyles?.LoginAction?.btn}
+            labelStyle={styles?.CustomerProfileStyles?.loginStyle?.btn_text}
+            style={styles?.CustomerProfileStyles?.loginStyle?.btn}
             onPress={handleLoginPress}
           >
             Login
@@ -91,15 +136,15 @@ function CustomerProfileStyles(props) {
           <Button
             icon="login"
             mode="contained"
-            labelStyle={styles?.CustomerProfileStyles?.LoginAction?.btn_text}
-            style={styles?.CustomerProfileStyles?.LoginAction?.btn}
+            labelStyle={styles?.CustomerProfileStyles?.loginStyle?.btn_text}
+            style={styles?.CustomerProfileStyles?.loginStyle?.btn}
             onPress={handleSignUpPress}
           >
             Sign up
           </Button>
         </View>
       )}
-    </>
+    </View>
   );
 }
 
